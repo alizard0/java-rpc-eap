@@ -11,9 +11,8 @@ public class RemoteHelloClient implements RemoteHello {
         Properties props = new Properties();
         props.put(Context.INITIAL_CONTEXT_FACTORY, "org.wildfly.naming.client.WildFlyInitialContextFactory");
         props.put(Context.PROVIDER_URL, "remote+http://192.168.1.41:8080");
-        //props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-        //props.put("wildfly.naming.client.ejb.context", true);
-        //props.put("org.jboss.ejb.client.scoped.context", true); // enable scoping here
+        props.put(Context.SECURITY_PRINCIPAL, "ejb");
+        props.put(Context.SECURITY_CREDENTIALS, "ejb-123!");
         return new InitialContext(props);
     }
 
